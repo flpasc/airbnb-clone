@@ -4,18 +4,8 @@ import dataArray from "../data";
 
 export default function Cards() {
 	const dataMapped = dataArray.map((host) => {
-		return (
-			<Contact
-				key={host.id}
-				title={host.title}
-				img={host.coverImg}
-				rating={host.stats.rating}
-				reviewCount={host.stats.reviewCount}
-				location={host.location}
-				price={host.price}
-				openSpots={host.openSpots}
-			/>
-		);
+		// alternative use:  {...host} instead of item={host}
+		return <Contact key={host.id} {...host} />;
 	});
 
 	return <div className="cards">{dataMapped}</div>;

@@ -3,23 +3,28 @@ import React from "react";
 import star from "../img/airbnb-star.png";
 
 export default function Contact(props) {
-	const { id, img, title, description, price, rating, reviewCount, location, openSpots } = props;
+	let badgeText;
+	if (props.openSpots === 0) {
+		badgeText = "SOLD OUT";
+	} else if (props.location === "Online") {
+		badgeText = "ONLINE";
+	}
 
 	return (
 		<div className="card--host">
-			{openSpots === 0 && <div className="card--badge">SOLD OUT</div>}
-			<img className="card--photo" src={`../img/${img}`} alt="" />
+			{badgeText && <div className="card--badge">{badgeText}</div>}
+			<img className="card--photo" src={`../img/${props.coverImg}`} alt="" />
 			<div className="card--rating">
 				<div className="card--rating-stars">
 					<img className="card--rating-star-photo" src={star} alt="" />
-					{rating}
+					{props.stats.rating}
 				</div>
-				<div className="card--rating-count">({reviewCount})</div>
-				<div className="card--rating-country">{location}</div>
+				<div className="card--rating-count">({props.stats.reviewCount})</div>
+				<div className="card--rating-country">{props.location}</div>
 			</div>
-			<div className="card--info">{title}</div>
+			<div className="card--info">{props.title}</div>
 			<div className="card--price">
-				<b>From ${price}</b> / person
+				<b>From ${props.price}</b> / person
 			</div>
 		</div>
 	);

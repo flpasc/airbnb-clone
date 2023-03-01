@@ -35,7 +35,7 @@ const dataArray = [
 			rating: 4.2,
 			reviewCount: 54,
 		},
-		location: "Online",
+		location: "",
 		openSpots: 2,
 	},
 ];
